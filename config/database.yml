@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: UTF-8
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: aws_rails_cap_dev
+  username: postgres
+  password: Pass@1234
+  host: localhost
+
+test:
+  <<: *default
+  database: aws_rails_cap_test
+  username: postgres
+  password: Pass@1234
+  host: localhost
+
+production:
+  <<: *default
