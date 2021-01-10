@@ -20,6 +20,13 @@ group :development do
   gem 'listen',                '3.1.5'
   gem 'spring',                '2.1.0'
   gem 'spring-watcher-listen', '2.0.1'
+  # ***** 以下を追加 *****
+  gem "capistrano", "~> 3.10", require: false
+  gem "capistrano-rails", "~> 1.6", require: false
+  gem 'capistrano-rbenv', '~> 2.2'
+  gem 'capistrano-rbenv-vars', '~> 0.1'
+  gem 'capistrano3-puma', '< 5'
+  # ***** 以上を追加 *****
 end
 
 group :test do

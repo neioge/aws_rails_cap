@@ -1,21 +1,28 @@
 default: &default
   adapter: postgresql
-  encoding: UTF-8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
   <<: *default
   database: aws_rails_cap_dev
+  encoding: UTF-8
   username: postgres
   password: Pass@1234
   host: localhost
+  port: 5432
 
 test:
   <<: *default
   database: aws_rails_cap_test
+  encoding: UTF-8
   username: postgres
   password: Pass@1234
   host: localhost
+  port: 5432
 
 production:
   <<: *default
+  database: aws_rails_cap_production
+  username: postgres
+  password: <%= Rails.application.credentials.db[:password] %>
+  host: <%= Rails.application.credentials.db[:hostname] %>
