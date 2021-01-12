@@ -1,7 +1,5 @@
 class EmployeesController < ApplicationController
-  def new
-  end
-  
+
   def show
     @employee = Employee.find(params[:id])
   end
@@ -13,6 +11,7 @@ class EmployeesController < ApplicationController
   def create
     @employee = Employee.new(employee_params)
     if @employee.save
+      log_in @employee
       flash[:success] = "FAQ管理システムへようこそ"
       redirect_to @employee
     else

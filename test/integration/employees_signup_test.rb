@@ -22,6 +22,7 @@ class EmployeesSignupTest < ActionDispatch::IntegrationTest
     end
     follow_redirect!
     assert_template 'employees/show'
+    assert is_logged_in?
   end
   
 end
