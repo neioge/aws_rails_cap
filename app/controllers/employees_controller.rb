@@ -20,7 +20,8 @@ class EmployeesController < ApplicationController
   end
   
   private
-
+    
+    # パラメータの数と種類を限定することで、例えば管理者権限などのパラメータを含ませて送信されることを防げる。
     def employee_params
       params.require(:employee).permit(:name, :email, :password, :password_confirmation)
     end
