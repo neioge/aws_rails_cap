@@ -9,8 +9,11 @@ http://www.neioge-raun-sample.com/
 ## 使用技術
 
 アプリケーション:Rails
+
 webサーバー:nginx puma
+
 データベース:postgresql
+
 インフラ:AWS(VPC EC2 RDS)
 
 ## アピールポイント
