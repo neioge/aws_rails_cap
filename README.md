@@ -1,7 +1,9 @@
 # 社内用イントラ
 
 日報・FAQ管理システムです。主にRails Tutorialを参考にして作成しました。
+
 http://www.neioge-raun-sample.com/
+
 [*Ruby on Rails チュートリアル*](https://railstutorial.jp/)
 
 ## 使用技術
