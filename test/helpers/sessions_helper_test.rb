@@ -3,7 +3,7 @@ require 'test_helper'
 class SessionsHelperTest < ActionView::TestCase
 
   def setup
-    @employee = employees(:sample1)
+    @employee = employees(:kanri)
     remember(@employee)
   end
 

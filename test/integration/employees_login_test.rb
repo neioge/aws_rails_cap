@@ -3,7 +3,7 @@ require 'test_helper'
 class EmployeesLoginTest < ActionDispatch::IntegrationTest
     
     def setup
-      @employee = employees(:sample1)
+      @employee = employees(:kanri)
     end
     
     test "login with valid email/invalid password" do

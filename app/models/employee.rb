@@ -10,8 +10,9 @@ class Employee < ApplicationRecord
                     uniqueness: true
   
   # パスワードについて
+  # 編集アクションのために、パスワードの空白を許す。新規作成時はhas_secure_passwordが反映されるので問題ない。
   has_secure_password
-  validates :password, presence: true, length: { minimum: 6 }
+  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
   
   # オブジェクトを必要としないメソッドは、モデルに記述する。他のファイルで簡単に参照できるようになる。
   
