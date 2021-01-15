@@ -1,24 +1,20 @@
-# README
+# 社内用イントラ
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+日報・FAQ管理システムです。主にRails Tutorialを参考にして作成しました。
 
-Things you may want to cover:
+http://www.neioge-raun-sample.com/
 
-* Ruby version
+[*Ruby on Rails チュートリアル*](https://railstutorial.jp/)
 
-* System dependencies
+## 使用技術
 
-* Configuration
+アプリケーション:Rails
 
-* Database creation
+webサーバー:nginx puma
 
-* Database initialization
+データベース:postgresql
 
-* How to run the test suite
+インフラ:AWS(VPC EC2 RDS)
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## アピールポイント
+・Capistranoで自動デプロイができるよう設定しました。
