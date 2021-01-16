@@ -12,5 +12,12 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   
+  # チャット機能
+  get '/chat', to: 'rooms#show'
+  resources :messages, only: :create
+  mount ActionCable.server => '/cable'
+  get '/show_additionally', to: 'rooms#show_additionally'
+  
   resources :employees
+  resources :reports,          only: [:create, :destroy]
 end

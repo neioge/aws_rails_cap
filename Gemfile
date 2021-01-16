@@ -16,6 +16,14 @@ gem 'bootsnap',   '1.4.5', require: false
 
 gem 'pg', '1.1.1'
 
+# chat機能について
+# ログイン機能
+gem 'devise'
+
+# 日本語化
+gem 'rails-i18n', '~> 6.0'
+gem 'devise-i18n'
+
 group :development, :test do
   gem 'byebug',  '11.0.1', platforms: [:mri, :mingw, :x64_mingw]
 end

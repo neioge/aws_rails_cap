@@ -18,3 +18,8 @@ require("channels")
 
 require("jquery")
 import "bootstrap"
+
+// chat用
+// 一番下に次を追加
+require("bootstrap/dist/js/bootstrap")
+// js.erb内でjQueryを使用されたい場合は，「window.$ = jQuery;」も必要です

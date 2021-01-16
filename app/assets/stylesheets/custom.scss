@@ -2,7 +2,7 @@
 @import "bootstrap";
 
 /* mixins, variables, etc. */
-
+$light-gray: #777;
 $gray-medium-light: #eaeaea;
 
 @mixin box_sizing {
@@ -35,6 +35,7 @@ textarea {
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
+  /* 単位なしの場合、文字の大きさに合わせて自動で切り替わる。*/
   line-height: 1;
 }
 
@@ -51,7 +52,7 @@ h2 {
   margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
-  color: #777;
+  color: $light-gray;
 }
 
 p {
@@ -65,14 +66,25 @@ p {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
-  color: white;
+  color: #fff;
+  /* 英数字を全て大文字にできる。 */
   text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
   font-weight: bold;
   &:hover {
-    color: whites;
+    color: #fff;
+    /* Bootstrapでは、初期値でホバー時に下線が引かれるようになっているのかもしれない。なのでnone*/
     text-decoration: none;
+  }
+}
+
+.nav {
+  a {
+    color: #fff;
+    &:hover {
+      color: #007BFF;
+    }
   }
 }
 
@@ -82,11 +94,11 @@ footer {
   margin-top: 45px;
   padding-top: 5px;
   border-top: 1px solid $gray-medium-light;
-  color: $gray-light;
+  color: $light-gray;
   a {
-    color: $gray;
+    color: #555;
     &:hover {
-      color: $gray-darker;
+      color: #222;
     }
   }
   small {
@@ -100,6 +112,13 @@ footer {
       margin-left: 15px;
     }
   }
+}
+
+/* testについてのCSS*/
+.cover {
+  background-image: image-url('bg.png');
+  /*background-image: url("<%= asset_path('bg.png') %>"); */
+  background-size: cover;
 }
 
 /* miscellaneous */
@@ -147,6 +166,44 @@ aside {
 
 .gravatar_edit {
   margin-top: 15px;
+}
+
+.stats {
+  overflow: auto;
+  margin-top: 0;
+  padding: 0;
+  a {
+    float: left;
+    padding: 0 10px;
+    border-left: 1px solid $gray-lighter;
+    color: gray;
+    &:first-child {
+      padding-left: 0;
+      border: 0;
+    }
+    &:hover {
+      text-decoration: none;
+      color: blue;
+    }
+  }
+  strong {
+    display: block;
+  }
+}
+
+.employee_avatars {
+  overflow: auto;
+  margin-top: 10px;
+  .gravatar {
+    margin: 1px 1px;
+  }
+  a {
+    padding: 0;
+  }
+}
+
+.employees.follow {
+  padding: 0;
 }
 
 /* forms */
@@ -201,4 +258,73 @@ input {
     padding: 10px 0;
     border-bottom: 1px solid $gray-lighter;
   }
+}
+
+/* microposts */
+
+.reports {
+  list-style: none;
+  padding: 0;
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+  .employee {
+    margin-top: 5em;
+    padding-top: 0;
+  }
+  .content {
+    display: block;
+    margin-left: 60px;
+    img {
+      display: block;
+      padding: 5px 0;
+    }
+  }
+  .timestamp {
+    color: $gray-light;
+    display: block;
+    margin-left: 60px;
+  }
+  .gravatar {
+    float: left;
+    margin-right: 10px;
+    margin-top: 5px;
+  }
+}
+
+aside {
+  textarea {
+    height: 100px;
+    margin-bottom: 5px;
+  }
+}
+
+span.image {
+  margin-top: 10px;
+  input {
+    border: 0;
+  }
+}
+
+// メッセージ一覧
+#message-container {
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 1rem 1rem 3rem 1rem;
+}
+
+// メッセージ投稿フォーム
+#main {
+  max-width: 768px;
+  padding: 1rem;
+  margin: 0 auto;
+  background-color: white;
+}
+
+// ボタン無効化時のスタイル
+.btn-primary.disabled {
+  background-color: #6c757d;
+  border-color: #6c757d;
+  cursor: auto;
 }

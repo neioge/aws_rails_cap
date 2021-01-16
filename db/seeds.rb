@@ -25,3 +25,17 @@ Employee.create!(name:  "Example Employee",
                password:              password,
                password_confirmation: password)
 end
+
+# ユーザーの一部を対象にマイクロポストを生成する
+employees = Employee.order(:created_at).take(6)
+50.times do
+  content = Faker::Lorem.sentence(word_count: 5)
+  employees.each { |employee| employee.reports.create!(content: content) }
+end
+
+# ユーザーの一部を対象にメッセージを生成する
+employees = Employee.order(:created_at).take(6)
+1000.times do
+  content = Faker::Lorem.sentence(word_count: 5)
+  employees.each { |employee| employee.messages.create!(content: content) }
+end

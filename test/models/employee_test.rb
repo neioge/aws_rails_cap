@@ -71,6 +71,14 @@ class EmployeeTest < ActiveSupport::TestCase
     assert_not @employee.authenticated?('')
   end
   
+  test "associated reports should be destroyed" do
+    @employee.save
+    @employee.reports.create!(content: "Lorem ipsum")
+    assert_difference 'Report.count', -1 do
+      @employee.destroy
+    end
+  end
+  
 end
 
 # ブラウザ１でログアウト（クッキートークン・ダイジェスト・セッションの削除）
@@ -79,3 +87,5 @@ end
 # headerパーシャルでヘルパーcurrent_userが呼び出された際に、クッキートークンを持っているので、
 # if employee && employee.authenticated?(cookies[:remember_token])が評価される。
 # この際に、クッキーダイジェストは存在しないので、クラスメソッドauthenticated?で例外が発生する。
+
+# メールアドレスから社員番号へ変更する際は、形式チェックテストを削除する。

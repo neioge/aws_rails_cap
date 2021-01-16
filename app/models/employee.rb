@@ -1,4 +1,11 @@
 class Employee < ApplicationRecord
+  
+  # FAQは従業員に依存させない
+  has_many :reports, dependent: :destroy
+  
+  # チャット
+  has_many :messages, dependent: :destroy
+  
   attr_accessor :remember_token
 
   # 名前とメールアドレスについて

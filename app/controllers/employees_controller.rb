@@ -23,9 +23,9 @@ class EmployeesController < ApplicationController
     @employees = Employee.paginate(page: params[:page])
   end
 
-  # 従業員情報を表示する。残す。
   def show
     @employee = Employee.find(params[:id])
+    @reports = @employee.reports.paginate(page: params[:page])
   end
   
   # 従業員のサインイン画面を表示する。残す。現時点ではビフォアアクションで弾かれないが、あとで弾くように変更する。
@@ -79,13 +79,14 @@ class EmployeesController < ApplicationController
     # beforeアクション
 
     # ログイン済みユーザーかどうか確認　ついでにフレフォのためにリクエスト先をヘルパーを使って保存する
-    def logged_in_employee
-      unless logged_in?
-        store_location
-        flash[:danger] = "ログインをしてください"
-        redirect_to login_url
-      end
-    end
+    # アプリケーションコントローラに配置して、全てのコントローラで使えるようにした。FAQでも使うことができる。
+    # def logged_in_employee
+    #   unless logged_in?
+    #     store_location
+    #     flash[:danger] = "ログインをしてください"
+    #     redirect_to login_url
+    #   end
+    # end
     
     # 正しいユーザーかどうか確認 今後消す予定。代わりに、「その従業員が管理者権限を持っていれば編集画面を返す」を用意。
     def correct_employee

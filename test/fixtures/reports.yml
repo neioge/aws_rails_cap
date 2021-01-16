@@ -1,0 +1,28 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+orange:
+  content: "大学生、みんな死んでほしい"
+  created_at: <%= 10.minutes.ago %>
+  employee: kanri
+
+tau_manifesto:
+  content: "大学生、なんであんなに声がでかいんだ？"
+  created_at: <%= 3.years.ago %>
+  employee: kanri
+
+cat_video:
+  content: "大学生には重税を課しても良い"
+  created_at: <%= 2.hours.ago %>
+  employee: kanri
+
+most_recent:
+  content: "大学生はクソ"
+  created_at: <%= Time.zone.now %>
+  employee: kanri
+  
+<% 30.times do |n| %>
+report_<%= n %>:
+  content: <%= Faker::Lorem.sentence(word_count: 5) %>
+  created_at: <%= 42.days.ago %>
+  employee: kanri
+<% end %>

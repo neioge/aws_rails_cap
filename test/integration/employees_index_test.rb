@@ -7,7 +7,7 @@ class EmployeesIndexTest < ActionDispatch::IntegrationTest
     @non_admin = employees(:hira)
   end
 
-  # 無限スクロールを入れない限りは必要。入れたら必要。
+  # 無限スクロールを入れない限りは必要。入れたら必要。編集機能をつけたら、編集リンクがあるかもテストするべき。
   test "index as admin including pagination and delete links" do
     log_in_as(@admin)
     get employees_path
