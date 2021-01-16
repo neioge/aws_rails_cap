@@ -52,6 +52,12 @@ class Employee < ApplicationRecord
     update_attribute(:remember_digest, nil)
   end
   
+  # 試作feedの定義
+  # 完全な実装は次章の「ユーザーをフォローする」を参照
+  def timeline
+    Report.where("employee_id = ?", id)
+  end
+  
 end
 
 # 自分用メモ

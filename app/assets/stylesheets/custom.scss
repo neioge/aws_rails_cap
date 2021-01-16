@@ -248,7 +248,7 @@ input {
   margin-left: 0;
 }
 
-/* Users index */
+/* Employees index */
 
 .employees {
   list-style: none;
@@ -260,7 +260,7 @@ input {
   }
 }
 
-/* microposts */
+/* reportts */
 
 .reports {
   list-style: none;
@@ -312,6 +312,11 @@ span.image {
   max-width: 768px;
   margin: 0 auto;
   padding: 1rem 1rem 3rem 1rem;
+}
+
+.message {
+  border-top: solid 1px #333;
+  margin-bottom: 2rem;
 }
 
 // メッセージ投稿フォーム

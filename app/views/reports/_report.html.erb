@@ -1,8 +1,14 @@
 <li id="report-<%= report.id %>">
-  <%= link_to gravatar_for(report.employee, size: 50), report.employee %>
+  <%= link_to gravatar_for(report.employee, size:50), report.employee %>
   <span class="employee"><%= link_to report.employee.name, report.employee %></span>
   <span class="content"><%= report.content %></span>
   <span class="timestamp">
-    Posted <%= time_ago_in_words(report.created_at) %> ago.
+    <%= time_ago_in_words(report.created_at) %>前に投稿
+    <% if current_employee?(report.employee) %>
+      <%= link_to "削除", report, method: :delete,
+                                       data: { confirm: "削除してもよろしいですか?" } %>
+    <% end %>
   </span>
 </li>
+
+<!--管理者は全ての日報を削除できるようにしたほうがいいと思う。-->

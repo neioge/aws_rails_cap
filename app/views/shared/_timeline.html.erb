@@ -1,0 +1,7 @@
+<% if @timeline_items.any? %>
+  <ol class="reports">
+    <%= render @timeline_items %>
+  </ol>
+  <%= will_paginate @timeline_items,
+                    params: { controller: :static_pages, action: :home } %>
+<% end %>

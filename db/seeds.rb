@@ -9,7 +9,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # メインのサンプル従業員を1人作成する
-Employee.create!(name:  "Example Employee",
+Employee.create!(name:  "FA Q太郎",
              email: "example@railstutorial.org",
              password:              "foobar",
              password_confirmation: "foobar",
@@ -29,13 +29,13 @@ end
 # ユーザーの一部を対象にマイクロポストを生成する
 employees = Employee.order(:created_at).take(6)
 50.times do
-  content = Faker::Lorem.sentence(word_count: 5)
+  content = Faker::Lorem.sentence(word_count: 30)
   employees.each { |employee| employee.reports.create!(content: content) }
 end
 
 # ユーザーの一部を対象にメッセージを生成する
 employees = Employee.order(:created_at).take(6)
 1000.times do
-  content = Faker::Lorem.sentence(word_count: 5)
+  content = Faker::Lorem.sentence(word_count: 10)
   employees.each { |employee| employee.messages.create!(content: content) }
 end

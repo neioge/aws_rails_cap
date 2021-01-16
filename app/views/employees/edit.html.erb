@@ -6,7 +6,7 @@
     <!--form_with(@employee)とすると、インスタンスが新規であればPOST、既成ならばPATCHとなる-->
     <%= form_with(model: @employee, local: true) do |f| %>
       
-      <%= render 'shared/error_messages' %>
+      <%= render 'shared/error_messages', object: f.object %>
 
       <%= f.label :name, "名前" %>
       <%= f.text_field :name, class: 'form-control' %>

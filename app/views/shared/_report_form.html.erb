@@ -1,0 +1,7 @@
+<%= form_with(model: @report, local: true) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+    <%= f.text_area :content, placeholder: "お疲れ様です..." %>
+  </div>
+  <%= f.submit "日報作成", class: "btn btn-primary" %>
+<% end %>
