@@ -1,0 +1,31 @@
+faq1:
+  question: "電話番号を教えてください"
+  answer: "０００−００００−００００です"
+  created_at: <%= 10.minutes.ago %>
+  employee: kanri
+
+faq2:
+  question: "住所を教えてください。"
+  answer: "東京都八王子市〇〇です。"
+  created_at: <%= 3.years.ago %>
+  employee: kanri
+
+faq3:
+  question: "営業時間を教えてください。"
+  answer: "９：００ー１８：００です。"
+  created_at: <%= 2.hours.ago %>
+  employee: kanri
+
+most_recent:
+  question: "頭取は誰ですか。"
+  answer: "片野直人でございます。"
+  created_at: <%= Time.zone.now %>
+  employee: kanri
+  
+<% 30.times do |n| %>
+faq_<%= n %>:
+  question: <%= Faker::Lorem.sentence(word_count: 5) %>
+  answer: <%= Faker::Lorem.sentence(word_count: 5) %>
+  created_at: <%= 42.days.ago %>
+  employee: kanri
+<% end %>

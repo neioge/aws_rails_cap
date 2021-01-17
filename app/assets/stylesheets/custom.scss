@@ -11,7 +11,7 @@ $gray-medium-light: #eaeaea;
   box-sizing:         border-box;
 }
 
-/* universal */
+/* 全体のデザイン */
 
 body {
   padding-top: 60px;
@@ -32,7 +32,7 @@ textarea {
   }
 }
 
-/* typography */
+/* 文字について */
 
 h1, h2, h3, h4, h5, h6 {
   /* 単位なしの場合、文字の大きさに合わせて自動で切り替わる。*/
@@ -60,7 +60,7 @@ p {
   line-height: 1.7em;
 }
 
-/* header */
+/* ヘッダー　ロゴとナビゲーション */
 
 #logo {
   float: left;
@@ -88,7 +88,7 @@ p {
   }
 }
 
-/* footer */
+/* フッター */
 
 footer {
   margin-top: 45px;
@@ -121,7 +121,7 @@ footer {
   background-size: cover;
 }
 
-/* miscellaneous */
+/* デバッガー */
 
 .debug_dump {
   clear: both;
@@ -131,7 +131,7 @@ footer {
   @include box_sizing;
 }
 
-/* sidebar */
+/* サイドバー。 日報一覧の従業員情報やFAQの回答など、左側の部分のこと。*/
 
 aside {
   section.employee_info {
@@ -191,22 +191,7 @@ aside {
   }
 }
 
-.employee_avatars {
-  overflow: auto;
-  margin-top: 10px;
-  .gravatar {
-    margin: 1px 1px;
-  }
-  a {
-    padding: 0;
-  }
-}
-
-.employees.follow {
-  padding: 0;
-}
-
-/* forms */
+/* 入力フォーム */
 
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
@@ -248,7 +233,7 @@ input {
   margin-left: 0;
 }
 
-/* Employees index */
+/*  従業員について*/
 
 .employees {
   list-style: none;
@@ -260,7 +245,7 @@ input {
   }
 }
 
-/* reportts */
+/* 日報について */
 
 .reports {
   list-style: none;
@@ -304,6 +289,37 @@ span.image {
   margin-top: 10px;
   input {
     border: 0;
+  }
+}
+
+/* faqについて */
+
+.faqs {
+  list-style: none;
+  padding: 0;
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+  .employee {
+    margin-top: 5em;
+    padding-top: 0;
+  }
+  .content {
+    display: block;
+    margin-left: 60px;
+    img {
+      display: block;
+      padding: 5px 0;
+    }
+  }
+  .timestamp {
+    color: $gray-light;
+  }
+  .gravatar {
+    float: left;
+    margin-right: 10px;
+    margin-top: 5px;
   }
 }
 

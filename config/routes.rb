@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
+  # ゲストログイン
+  post '/guest_login', to: 'sessions#guest'
+
   
   # チャット機能
   get '/chat', to: 'rooms#show'
@@ -18,6 +21,10 @@ Rails.application.routes.draw do
   mount ActionCable.server => '/cable'
   get '/show_additionally', to: 'rooms#show_additionally'
   
+  # FAQ関係
+  get '/faqs/serch', to: 'faqs#serch'
+  
   resources :employees
   resources :reports,          only: [:create, :destroy]
+  resources :faqs
 end

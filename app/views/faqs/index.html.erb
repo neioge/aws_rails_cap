@@ -1,0 +1,30 @@
+<!--FAQ一覧の土台になるページ。参考にするのはstatic-pages/home.html-->
+
+<% provide(:title, 'FAQ一覧') %>
+
+<div class="row">
+  <aside class="col-md-4">
+    <section class="question_info">
+      <%= render 'shared/question_info' %>
+    </section>
+    <section class="report_form">
+      <%= render 'shared/answer' %>
+    </section>
+  </aside>
+  <div class="col-md-8">
+    <% if @faqs.any? %>
+      <h3>FAQ検索</h3>
+      <%= form_tag(faqs_path,:method => 'get') do %>
+        <%= text_field_tag :search %>
+        <%= submit_tag '検索', :name => nil %>
+      <% end %>
+      
+      <h3>FAQ一覧</h3>
+      <ol class="faqs">
+        <%= render @faqs %>
+      </ol>
+      
+      <%= will_paginate %>
+    <% end %>
+  </div>
+</div>

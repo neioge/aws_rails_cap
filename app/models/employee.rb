@@ -1,7 +1,8 @@
 class Employee < ApplicationRecord
   
-  # FAQは従業員に依存させない
+  # FAQは従業員に依存させない 管理者がいなくなってもFAQは残す必要があるから。
   has_many :reports, dependent: :destroy
+  has_many :faqs
   
   # チャット
   has_many :messages, dependent: :destroy
@@ -58,6 +59,7 @@ class Employee < ApplicationRecord
     Report.where("employee_id = ?", id)
   end
   
+
 end
 
 # 自分用メモ

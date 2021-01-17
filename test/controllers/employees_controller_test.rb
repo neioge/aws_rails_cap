@@ -34,7 +34,6 @@ class EmployeesControllerTest < ActionDispatch::IntegrationTest
   test "should redirect edit when logged in as wrong employee" do
     log_in_as(@other_employee)
     get edit_employee_path(@employee)
-    assert flash.empty?
     assert_redirected_to root_url
   end
 
@@ -43,7 +42,6 @@ class EmployeesControllerTest < ActionDispatch::IntegrationTest
     log_in_as(@other_employee)
     patch employee_path(@employee), params: { employee: { name: @employee.name,
                                               email: @employee.email } }
-    assert flash.empty?
     assert_redirected_to root_url
   end
   

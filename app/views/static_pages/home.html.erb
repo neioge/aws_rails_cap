@@ -9,20 +9,15 @@
       </section>
     </aside>
     <div class="col-md-8">
-      <h3>タイムライン</h3>
+      <h3>日報一覧</h3>
       <%= render 'shared/timeline' %>
     </div>
   </div>
 <% else %>
   <div class="center jumbotron">
     <h1>FAQ管理システムへようこそ</h1>
-    <p>
-      アカウントを作成される方は「アカウントを作成」をクリック。
-    </p>
-    <p>
-      作成済みの方は右上のログインボタンをクリック。
-    </p>
     
-    <%= link_to "アカウントを作成", signup_path,  class: "btn btn-lg btn-primary" %>
+    <%= link_to "ログイン", login_path,  class: "btn btn-lg btn-primary" %>
+    <%= link_to 'ゲストログイン', guest_login_path, method: :post, class: "btn btn-lg btn-info"%>
   </div>
 <% end %>

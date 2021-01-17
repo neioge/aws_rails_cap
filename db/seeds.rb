@@ -39,3 +39,11 @@ employees = Employee.order(:created_at).take(6)
   content = Faker::Lorem.sentence(word_count: 10)
   employees.each { |employee| employee.messages.create!(content: content) }
 end
+
+# ユーザーの一部を対象にFAQを生成する
+employees = Employee.order(:created_at).take(6)
+50.times do
+  question = Faker::Lorem.sentence(word_count: 20)
+  answer = Faker::Lorem.sentence(word_count: 20)
+  employees.each { |employee| employee.faqs.create!(question: question, answer: answer) }
+end
