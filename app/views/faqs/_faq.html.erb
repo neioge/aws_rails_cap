@@ -1,7 +1,9 @@
 <!--日報一覧画面の右側のイメージ。参照すべきはreports/_report.html.erb-->
 
 <li id="faq-<%= faq.id %>">
-  <p class="question"><%= faq.question %></p>
+  <p class="question">Q：<%= faq.question %></p>
+  <p class="answer" style="border-top:3px solid #e8e8e8"%>A：<%= faq.answer %></p>
+  
   <span class="ID">FAQ番号：<%= faq.id %>　</span>
   <span class="employee">作成者：<%= link_to faq.employee.name, faq.employee %>　</span>
   <span class="timestamp">作成日時：<%= l faq.created_at, format: '%Y年%-m月%-d日(%a) %H:%M' %></span>

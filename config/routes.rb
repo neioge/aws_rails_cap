@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   # FAQ関係
   get '/faqs/serch', to: 'faqs#serch'
   
+  # 用語集
+  
   resources :employees
   resources :reports,          only: [:create, :destroy]
   resources :faqs

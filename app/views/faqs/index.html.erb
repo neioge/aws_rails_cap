@@ -1,14 +1,13 @@
+<%= javascript_pack_tag 'faq/faqIndex' %>
+
 <!--FAQ一覧の土台になるページ。参考にするのはstatic-pages/home.html-->
 
 <% provide(:title, 'FAQ一覧') %>
 
 <div class="row">
-  <aside class="col-md-4">
-    <section class="question_info">
+  <aside id="aside" class="col-md-4">
+    <section id="question" class="question_info">
       <%= render 'shared/question_info' %>
-    </section>
-    <section class="report_form">
-      <%= render 'shared/answer' %>
     </section>
   </aside>
   <div class="col-md-8">
@@ -20,7 +19,7 @@
       <% end %>
       
       <h3>FAQ一覧</h3>
-      <ol class="faqs">
+      <ol id="faqs">
         <%= render @faqs %>
       </ol>
       
@@ -28,3 +27,4 @@
     <% end %>
   </div>
 </div>
+

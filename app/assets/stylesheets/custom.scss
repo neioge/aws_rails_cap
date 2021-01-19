@@ -294,12 +294,16 @@ span.image {
 
 /* faqについて */
 
-.faqs {
+#faqs {
   list-style: none;
   padding: 0;
   li {
     padding: 10px 0;
-    border-top: 1px solid #e8e8e8;
+    border-top: 3px solid #007BFF;
+    cursor : pointer;
+    &:hover {
+      background-color: #BAD3FF;
+    }
   }
   .employee {
     margin-top: 5em;
