@@ -47,3 +47,11 @@ employees = Employee.order(:created_at).take(6)
   answer = Faker::Lorem.sentence(word_count: 20)
   employees.each { |employee| employee.faqs.create!(question: question, answer: answer) }
 end
+
+# 以下のリレーションシップを作成する
+employees = Employee.all
+employee  = employees.first
+following = employees[2..50]
+followers = employees[3..40]
+following.each { |followed| employee.follow(followed) }
+followers.each { |follower| follower.follow(employee) }

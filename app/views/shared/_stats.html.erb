@@ -1,0 +1,15 @@
+<% @employee ||= current_employee %>
+<div class="stats">
+  <a href="<%= following_employee_path(@employee) %>">
+    <strong id="following" class="stat">
+      <%= @employee.following.count %>
+    </strong>
+    following
+  </a>
+  <a href="<%= followers_employee_path(@employee) %>">
+    <strong id="followers" class="stat">
+      <%= @employee.followers.count %>
+    </strong>
+    followers
+  </a>
+</div>

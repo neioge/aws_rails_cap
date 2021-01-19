@@ -2,7 +2,7 @@ class EmployeesController < ApplicationController
 
   # ログインしていない従業員を弾く。この後、URLの中身にnew createも追加すると思う。
   # ログドインユーザーはフレンドリーフォワーディングに使われるけど、あとでshow・createにも適用する必要がある。（createはむりだが）
-  before_action :logged_in_employee, only: [:index, :edit, :update, :destroy]
+  before_action :logged_in_employee, only: [:index, :edit, :update, :destroy, :following, :followers]
   
   # こちらは今後消す予定。代わりに、「現在の従業員が管理者権限を持っていればエディット画面を返す」←これは、したのやつでできる
   before_action :correct_employee,   only: [:edit, :update]
@@ -65,6 +65,20 @@ class EmployeesController < ApplicationController
     else
       render 'edit'
     end
+  end
+  
+  def following
+    @title = "フォロー"
+    @employee  = Employee.find(params[:id])
+    @employees = @employee.following.paginate(page: params[:page])
+    render 'show_follow'
+  end
+
+  def followers
+    @title = "フォロワー"
+    @employee  = Employee.find(params[:id])
+    @employees = @employee.followers.paginate(page: params[:page])
+    render 'show_follow'
   end
   
   private

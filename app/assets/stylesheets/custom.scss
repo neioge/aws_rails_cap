@@ -191,6 +191,21 @@ aside {
   }
 }
 
+.employee_avatars {
+  overflow: auto;
+  margin-top: 10px;
+  .gravatar {
+    margin: 1px 1px;
+  }
+  a {
+    padding: 0;
+  }
+}
+
+.employees.follow {
+  padding: 0;
+}
+
 /* 入力フォーム */
 
 input, textarea, select, .uneditable-input {
@@ -240,8 +255,15 @@ input {
   margin: 0;
   li {
     overflow: auto;
-    padding: 10px 0;
+    padding: 15px 0;
     border-bottom: 1px solid $gray-lighter;
+  }
+  h2 {
+    font-size: 1.2em;
+    letter-spacing: -1px;
+    margin-bottom: 30px;
+    font-weight: normal;
+    color: $light-gray;
   }
 }
 

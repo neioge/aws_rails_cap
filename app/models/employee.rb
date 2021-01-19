@@ -1,11 +1,18 @@
 class Employee < ApplicationRecord
   
-  # FAQは従業員に依存させない 管理者がいなくなってもFAQは残す必要があるから。
   has_many :reports, dependent: :destroy
   has_many :faqs
-  
-  # チャット
   has_many :messages, dependent: :destroy
+  
+  # 一人の従業員と複数の関係を結合する。
+  # クラスネームを明記しないと、active・passive_relationshipsモデルを探してしまう。
+  # 外部キーのfollower・followedというクラスは存在しないが、関係モデルでフォロワーという名前でbelongするという設定にしている。
+  has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  has_many :passive_relationships, class_name:  "Relationship", foreign_key: "followed_id", dependent: :destroy
+  # 一人の従業員と複数のフォロワーを結合する。
+  # 素直にかけばhas_many :followedsだが、英語的に不適切なので、名前をfollowing、ソースで明記をしている。
+  has_many :following, through: :active_relationships, source: :followed
+  has_many :followers, through: :passive_relationships, source: :follower
   
   attr_accessor :remember_token
 
@@ -36,7 +43,7 @@ class Employee < ApplicationRecord
     SecureRandom.urlsafe_base64
   end
   
-  # 永続セッションのためにユーザーをデータベースに記憶する
+  # 永続セッションのために従業員をデータベースに記憶する
   def remember
     self.remember_token = Employee.new_token
     update_attribute(:remember_digest, Employee.digest(remember_token))
@@ -48,7 +55,7 @@ class Employee < ApplicationRecord
     BCrypt::Password.new(remember_digest).is_password?(remember_token)
   end
   
-  # ユーザーのログイン情報を破棄する
+  # 従業員のログイン情報を破棄する
   def forget
     update_attribute(:remember_digest, nil)
   end
@@ -56,9 +63,24 @@ class Employee < ApplicationRecord
   # 試作feedの定義
   # 完全な実装は次章の「ユーザーをフォローする」を参照
   def timeline
-    Report.where("employee_id = ?", id)
+    following_ids = "SELECT followed_id FROM relationships
+                     WHERE follower_id = :employee_id"
+    Report.where("employee_id IN (#{following_ids})
+                     OR employee_id = :employee_id", employee_id: id)
   end
   
+  # 従業員をフォローする
+  def follow(other_employee)
+    following << other_employee
+  end
+  # 従業員をフォロー解除する
+  def unfollow(other_employee)
+    active_relationships.find_by(followed_id: other_employee.id).destroy
+  end
+  # 現在の従業員がフォローしてたらtrueを返す
+  def following?(other_employee)
+    following.include?(other_employee)
+  end
 
 end
 

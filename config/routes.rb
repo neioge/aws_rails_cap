@@ -11,22 +11,30 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
-  # ゲストログイン
   post '/guest_login', to: 'sessions#guest'
-
   
-  # チャット機能
+  # 従業員関連
+  resources :employees
+  
+  # 日報関連
+  resources :reports, only: [:create, :destroy]
+  
+  # チャット関連
   get '/chat', to: 'rooms#show'
   resources :messages, only: :create
   mount ActionCable.server => '/cable'
   get '/show_additionally', to: 'rooms#show_additionally'
   
   # FAQ関係
-  get '/faqs/serch', to: 'faqs#serch'
-  
-  # 用語集
-  
-  resources :employees
-  resources :reports,          only: [:create, :destroy]
   resources :faqs
+  get '/faqs/serch', to: 'faqs#serch'
+
+  # フォロー関連
+  resources :employees do
+    member do
+      get :following, :followers
+    end
+  end
+  resources :relationships,       only: [:create, :destroy]
+  
 end

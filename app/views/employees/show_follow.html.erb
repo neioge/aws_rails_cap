@@ -1,0 +1,23 @@
+<% provide(:title, @title) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="employee_info">
+      <%= gravatar_for @employee %>
+      <h1><%= @employee.name %></h1>
+      <span><%= link_to "プロフィールを見る", @employee %></span>
+      <span><b>作成した日報:</b> <%= @employee.reports.count %></span>
+    </section>
+    <section class="stats">
+      <%= render 'shared/stats' %>
+    </section>
+  </aside>
+  <div class="col-md-8">
+    <h3><%= @title %></h3>
+    <% if @employees.any? %>
+      <ul class="employees follow">
+        <%= render @employees %>
+      </ul>
+      <%= will_paginate %>
+    <% end %>
+  </div>
+</div>

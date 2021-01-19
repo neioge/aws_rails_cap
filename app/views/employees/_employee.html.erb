@@ -1,6 +1,6 @@
 <li>
-  <%= gravatar_for employee, size: 50 %>
-  <%= link_to employee.name, employee %>
+  <h3><%= link_to gravatar_for(employee, size: 80), employee %></h3>
+  <h3><%= link_to employee.name, employee %></h3>
   <% if current_employee.admin? && !current_employee?(employee) %>
     | <%= link_to "削除", employee, method: :delete,
                                   data: { confirm: employee.name + "　を削除しますか？" } %>

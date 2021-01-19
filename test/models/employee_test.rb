@@ -79,6 +79,36 @@ class EmployeeTest < ActiveSupport::TestCase
     end
   end
   
+  # 
+  test "should follow and unfollow a employee" do
+    kanri = employees(:kanri)
+    hira  = employees(:hira)
+    assert_not kanri.following?(hira)
+    kanri.follow(hira)
+    assert kanri.following?(hira)
+    assert hira.followers.include?(kanri)
+    kanri.unfollow(hira)
+    assert_not kanri.following?(hira)
+  end
+  
+  test "timeline should have the right reports" do
+    kanri = employees(:kanri)
+    hira  = employees(:hira)
+    lana    = employees(:lana)
+    # フォローしているユーザーの投稿を確認
+    lana.reports.each do |report_following|
+      assert kanri.timeline.include?(report_following)
+    end
+    # 自分自身の投稿を確認
+    kanri.reports.each do |report_self|
+      assert kanri.timeline.include?(report_self)
+    end
+    # フォローしていないユーザーの投稿を確認
+    hira.reports.each do |report_unfollowed|
+      assert_not kanri.timeline.include?(report_unfollowed)
+    end
+  end
+  
 end
 
 # ブラウザ１でログアウト（クッキートークン・ダイジェスト・セッションの削除）

@@ -1,0 +1,15 @@
+one:
+  follower: kanri
+  followed: lana
+
+two:
+  follower: kanri
+  followed: malory
+
+three:
+  follower: lana
+  followed: kanri
+
+four:
+  follower: hira
+  followed: kanri
