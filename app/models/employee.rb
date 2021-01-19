@@ -82,6 +82,11 @@ class Employee < ApplicationRecord
     following.include?(other_employee)
   end
 
+  def self.search(search)
+    return Employee.all unless search
+    Employee.where(['name LIKE ?', "%#{search}%"])
+  end
+  
 end
 
 # 自分用メモ

@@ -18,9 +18,13 @@ class EmployeesController < ApplicationController
     redirect_to employees_url
   end
   
-  # パラメータがnilなら１ページ目を出すようになっている。
   def index
-    @employees = Employee.paginate(page: params[:page])
+    @employees = Employee.search(params[:search]).paginate(page: params[:page])
+    if @employees.length == 0
+      flash.now[:danger] = "一致する従業員が見つかりませんでした。"
+      @employees = Employee.paginate(page: params[:page])
+      render 'index'
+    end
   end
 
   def show
@@ -79,6 +83,11 @@ class EmployeesController < ApplicationController
     @employee  = Employee.find(params[:id])
     @employees = @employee.followers.paginate(page: params[:page])
     render 'show_follow'
+  end
+  
+  def search
+    #Viewのformで取得したパラメータをモデルに渡す
+    @employees = Employee.search(params[:search])
   end
   
   private
